@@ -20,11 +20,15 @@ def predict():
     reading = request.form.get('math score')
     writing = request.form.get('math score')
 
-    # Create a data frame with the user input
-    data = pd.DataFrame([[math, reading, writing]], columns=['math score', 'reading score', 'writing score'])
 
-    # Make a prediction using the model
-    prediction = model.predict(data)
+    features = [math, reading, writing]
+
+    # Convert the list to a 2D array
+    features = [list(map(int, features))]
+
+    # Predict the class using the model
+    prediction = model.predict(features)[0]
+
 
     # Render a new web page with the prediction
     return render_template('index.html', prediction=prediction)
