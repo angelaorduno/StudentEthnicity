@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+    <title>Student Race/Ethnicity Prediction</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #33d4ff;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            height: 30px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            height: 40px;
+            margin-top: 20px;
+            background-color: #333;
+            color: #fff;
+            font-weight: bold;
+        }
+        .result {
+            width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .result p {
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Student Race/Ethnicity Prediction</h1>
+	    <form action="/predict" autocomplete="on" method="POST">
+        <label for="math score">Math Score:</label>
+        <input type="number" id="math score" name="math score" min="0" max="100" required>
+        <label for="reading score">Reading Score:</label>
+        <input type="number" id="reading score" name="reading score" min="0" max="100" required>
+        <label for="writing score">Writing Score:</label>
+        <input type="number" id="writing score" name="writing score" min="0" max="100" required>
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction %}
+    <div class="result">
+        <p>The predicted Race/Ethnicity is: {{ prediction }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
